@@ -38,11 +38,22 @@ header > h1 {
   position: relative;
 }
 
+@media only screen and (max-width: 600px) {
+  .score-board {
+    width: 10rem;
+  }
+}
+
 .badge {
   background-color: #e2584d;
   color: white;
   font-size: 1.4rem;
   padding: 2px 1rem;
+}
+@media only screen and (max-width: 600px) {
+  .badge {
+    font-size: 1rem;
+  }
 }
 
 #user-label {
@@ -57,16 +68,26 @@ header > h1 {
   right: -3rem;
 }
 
-#user-choice {
+.user-img {
   position: absolute;
   top: 8rem;
-  left: 8rem;
+  left: 30%;
+}
+@media only screen and (max-width: 600px) {
+  .user-img {
+    left: 0.5rem;
+  }
 }
 
-#computer-choice {
+.computer-img {
   position: absolute;
   top: 8rem;
-  right: 8rem;
+  right: 30%;
+}
+@media only screen and (max-width: 600px) {
+  .computer-img {
+    right: 0.5rem;
+  }
 }
 
 .result {
@@ -77,6 +98,12 @@ header > h1 {
 .result > p {
   text-align: center;
   font-weight: bold;
+}
+@media only screen and (max-width: 600px) {
+  .result > p {
+    font-size: 3rem;
+    margin-top: 3rem;
+  }
 }
 
 .choices {
