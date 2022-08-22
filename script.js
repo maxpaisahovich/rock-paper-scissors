@@ -6,6 +6,7 @@ const scoreBoardDiv = document.querySelector(".score-board");
 const userChoiceImg = document.getElementById("user-choice");
 const computerChoiceImg = document.getElementById("computer-choice");
 const resultParagraph = document.querySelector(".result > p");
+const endGameAlert = document.getElementById("action-message");
 const rockDiv = document.getElementById("r");
 const paperDiv = document.getElementById("p");
 const scissorsDiv = document.getElementById("s");
@@ -41,6 +42,10 @@ function win(userChoice, computerChoice) {
     ${convertToWord(computerChoice)} 
       you win! 🔥`;
 
+  if (userScore === 5 || computerScore === 5) {
+    return endGame();
+  }
+
   userChoiceDiv.classList.add(`green-glow`);
   setTimeout(() => {
     userChoiceDiv.classList.remove(`green-glow`);
@@ -59,6 +64,10 @@ function lose(userChoice, computerChoice) {
     loses to 
     ${convertToWord(computerChoice)} 
     you lose... ☠️`;
+
+  if (userScore === 5 || computerScore === 5) {
+    return endGame();
+  }
 
   userChoiceDiv.classList.add(`red-glow`);
   setTimeout(() => {
@@ -101,6 +110,25 @@ function game(userChoice) {
       draw(userChoice, computerChoice);
       break;
   }
+}
+
+function endGame() {
+  endGameAlert.innerHTML = userScore === 5 ? `you win 🔥` : `you lose 💩`;
+  endGameAlert.innerHTML += ` <br> <button id="reset-btn" onClick="startNewGame()">reset</button>`;
+  rockDiv.style.pointerEvents = "none";
+  paperDiv.style.pointerEvents = "none";
+  scissorsDiv.style.pointerEvents = "none";
+}
+
+function startNewGame() {
+  userScore = 0;
+  computerScore = 0;
+  userScoreSpan.innerHTML = userScore;
+  computerScoreSpan.innerHTML = computerScore;
+  rockDiv.style.pointerEvents = "auto";
+  paperDiv.style.pointerEvents = "auto";
+  scissorsDiv.style.pointerEvents = "auto";
+  endGameAlert.innerHTML = `Play again`;
 }
 
 function main() {
